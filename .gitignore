@@ -1,0 +1,10 @@
+# Python 캐시 파일
+__pycache__/
+
+# Jupyter Notebook 체크포인트
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+bge-m3/
+Qwen2.5-7B-Instruct/
+Qwen2.5-1.5B-Instruct/
