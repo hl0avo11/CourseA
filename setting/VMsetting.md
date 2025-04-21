@@ -36,6 +36,7 @@
     - 명령어 실행이 잘 되면 기본 드라이버는 설치가 된 것
  
 ### CUDA, cuDNN 설치
+- mkdir tmp; cd tmp; wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
 - sudo dpkg -i cuda-keyring_1.1-1_all.deb
 - sudo apt-get update
 - sudo apt-get install cuda -y
