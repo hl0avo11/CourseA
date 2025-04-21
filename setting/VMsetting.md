@@ -118,3 +118,12 @@ sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
     - 이후 본인의 외부IP로 jupyterlab 연결 확인: http://{YOUR_IP}:8888/lab
 
 * docker container에서 종료 없이 나오는 단축키: Ctrl+P+Q
+
+
+sudo usermod -aG docker $USER
+newgrp docker
+docker start pytorch
+docker exec -it pytorch /bin/bash
+jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token="" --NotebookApp.password="" --no-browser --NotebookApp.allow_origin="*"
+
+
