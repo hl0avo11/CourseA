@@ -16,7 +16,7 @@
 - 네트워킹
     - HTTP 트래픽 허용
     - HTTPS 트래픽 허용
-    - 네트워크 태그: jupyter, tensorboard \
+    - 네트워크 태그: jupyter \
       ※ 사전 방화벽이 설정되어 있음
 - 보안
     - 서비스 계정: 서비스 계정 없음
@@ -31,7 +31,7 @@
 - sudo apt-get install ubuntu-drivers-common -y
     - ubuntu-drivers devices > driver 리스트 확인 후 recommend 버전 설치
     - sudo apt-get install nvidia-driver-550 -y
-- reboot now > 이후 SSH 창 닫고 1분쯤 후 다시 연결
+- sudo reboot now > 이후 SSH 창 닫고 1분쯤 후 다시 연결
 - nvidia-smi
     - 명령어 실행이 잘 되면 기본 드라이버는 설치가 된 것
  
@@ -51,7 +51,7 @@
  
 ### 기본 세팅: torch, jupyter 설치
 - sudo apt-get install jupyter jupyter-core -y
-- pip install torch==2.5.1+cu124 jupyterlab ipykernel
+- pip install torch==2.5.1 jupyterlab ipykernel
 - jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token="" --NotebookApp.password="" --no-browser --NotebookApp.allow_origin="*"
 - 이후 본인의 외부IP로 jupyterlab 연결 확인: http://{YOUR_IP}:8888/lab
 ※ 주의: 사용 종료 후에는 반드시 ctrl+c 두 번으로 종료해야 함
@@ -116,3 +116,5 @@ sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
     - echo "c.NotebookApp.terminado_settings = { 'shell_command': ['bash'] }" >> ~/.jupyter/jupyter_lab_config.py
     - jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token="" --NotebookApp.password="" --no-browser --NotebookApp.allow_origin="*"
     - 이후 본인의 외부IP로 jupyterlab 연결 확인: http://{YOUR_IP}:8888/lab
+
+* docker container에서 종료 없이 나오는 단축키: Ctrl+P+Q
