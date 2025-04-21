@@ -120,10 +120,10 @@ sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 * docker container에서 종료 없이 나오는 단축키: Ctrl+P+Q
 
 
-sudo usermod -aG docker $USER
-newgrp docker
-docker start pytorch
-docker exec -it pytorch /bin/bash
-jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token="" --NotebookApp.password="" --no-browser --NotebookApp.allow_origin="*"
+- sudo usermod -aG docker $USER
+- newgrp docker
+- docker start pytorch
+- docker exec -it pytorch /bin/bash
+- jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token="" --NotebookApp.password="" --no-browser --NotebookApp.allow_origin="*"
 
 
