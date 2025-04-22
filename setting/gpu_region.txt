@@ -1,14 +1,14 @@
-asia-east1
+asia-east1 / T4: asia-east1
 오화용님, 이재훈님, 백란님, 김태엽님
 
-us-west1 
+us-west1 / T4: asia-east2
 가성현님, 고성민님, 김보건님, 김성우님, 김연수님, 김종관님
 
-us-central1 
+us-central1 / T4: asia-northeast1
 김태연님, 나봉원님, 류길성님, 박진구님, 방수진님, 성재희님
 
-us-east1
+us-east1 / T4: asia-northeast2
 신희종님, 오민균님, 오수민님, 오창우님, 유재희님, 이민준님
 
-europe-west4
+europe-west4 / T4: asia-northeast3
 이성준님, 이지정님, 이홍철님, 정민우님, 최혜민님, 홍진파님
