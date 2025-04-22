@@ -1,0 +1,3 @@
+- RPS: 9.1
+- 실행 명령어: vllm serve models/Qwen2.5-1.5B-Instruct/ --port 8006 --dtype half --gpu-memory-utilization 0.6 --enforce-eager | grep metric
+- 변경 목적: 초기 설정을 함으로서 기준값을 보여주기 위함
