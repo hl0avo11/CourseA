@@ -19,7 +19,7 @@ from accelerate import Accelerator
 
 def main():
     # 모델과 토크나이저 로드
-    model_name = "Qwen/Qwen2.5-1.5B"
+    model_name = "../Qwen2.5-1.5B-Instruct"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
@@ -40,21 +40,25 @@ def main():
     model = get_peft_model(model, peft_config)
 
     # 데이터셋 로드 및 전처리
-    def preprocess_function(examples):
+    def dataset_to_text(data):
+        new_data = {}
+        new_data['messages'] = [{'role':'user','content':data['question']},
+                               {'role':'assistant','content':str(data['answer'])}]
+        new_data['text'] = tokenizer.apply_chat_template(new_data['messages'], tokenize=False)
+        return new_data
+    
+    def tokenize_text(examples):
         return tokenizer(examples["text"], truncation=True, max_length=512)
-
-    dataset = load_dataset("Junnos/luckyvicky")  # 실제 데이터셋으로 교체 필요
+    
+    dataset = load_dataset("csv", data_files="../hrm8k_dataset.csv")  # 실제 데이터셋으로 교체 필요
     # if int(os.envionr["RANK"])==0:
-    print(f"Dataset load 직후: {dataset['train'][0]}")
-    dataset = dataset.map(lambda x: {'text': x['input'] + x['output']})
-    print(f"Text column 추가: {dataset['train'][0]}")
-    tokenized_dataset = dataset.map(preprocess_function, 
-                                    batched=True,
-                                   )
-    print(f"Tokenizer 통과: {tokenized_dataset['train'][0]}")
-
-    # Accelerator 설정
-    accelerator = Accelerator()
+    print(f"Dataset load 직후:\n {dataset['train'][0]}")
+    dataset = dataset.map(dataset_to_text, 
+                          remove_columns=dataset['train'].column_names)
+    print(f"Text column 추가:\n {dataset['train'][0]}")
+    tokenized_dataset = dataset.map(tokenize_text, 
+                                    remove_columns=dataset['train'].column_names)
+    print(f"Tokenizer 통과:\n {tokenized_dataset['train'][0]}")
 
     # 학습 설정
     training_args = TrainingArguments(
