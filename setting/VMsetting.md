@@ -131,4 +131,7 @@ sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 - git-lfs install
 - git clone https://huggingface.co/BAAI/bge-m3
 
+### 코드파일 tar로 압축해서 다운로드
+- 모델파일은 모두 지우고 실행
+- tar -cvf CourseA.tar CourseA/
 
