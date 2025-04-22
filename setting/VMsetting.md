@@ -126,6 +126,7 @@ sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 - docker exec -it pytorch /bin/bash
 - jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token="" --NotebookApp.password="" --no-browser --NotebookApp.allow_origin="*"
 
+### 모델 다운로드
 - mv 9.\ Serving/model/Qwen2.5-1.5B-Instruct .
 - git-lfs install
 - git clone https://huggingface.co/BAAI/bge-m3
